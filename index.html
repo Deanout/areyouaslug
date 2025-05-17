@@ -12,5 +12,20 @@
       h1{margin:0}
     </style>
   </head>
-  <body><h1>yes</h1></body>
+
+  <body>
+    <h1 id="msg">yes</h1>
+
+    <script>
+      // 1. Grab the search params
+      const params = new URLSearchParams(window.location.search);
+      const name   = params.get('n')?.toLowerCase();   // ?n=dean or n=evan
+
+      // 2. Decide what to show
+      if (name === 'dean' || name === 'evan') {
+        const proper = name.charAt(0).toUpperCase() + name.slice(1);   // Dean / Evan
+        document.getElementById('msg').textContent = `${proper} is not a slug`;
+      }
+    </script>
+  </body>
 </html>
